@@ -1,0 +1,114 @@
+
+.ganache-info {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FCF8F3; /* Light blue background */
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    background-color: #343a40; /* Dark blue background */
+    color: #ebb67e; /* White text color */
+    padding: 15px 20px;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+  }
+  
+  /* Header title */
+  .header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  /* Network Info container */
+  .network-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    color: #ebb67e; /* White text color */
+  }
+  
+  /* Network Info items */
+  .network-info p {
+    font-size: 14px;
+    margin: 0;
+  }
+  
+
+/* Error messages */
+.error {
+    color: #dc3545; /* Red for error messages */
+    font-size: 14px; /* Smaller font size */
+}
+
+/* Main content container */
+.main-content {
+    padding: 20px;
+}
+
+/* Account and index section */
+.account-info {
+    background-color: #fff; /* White background */
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 20px; /* Add margin between sections */
+}
+
+/* Account title */
+.account-info h3 {
+    background-color: #ebb67e; /* Blue header background */
+    color: #fff; /* White text color */
+    padding: 12px 20px;
+    margin: 0;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+    font-size: 18px;
+    margin-bottom: 20px; /* Add margin below header */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px; /* Adjusted padding */
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+
+/* Chart styling */
+
+/* Chart styling */
+.chart-container {
+    width: 100%; /* Full width */
+    max-width: 800px; /* Limiting the max width for larger screens */
+    margin: 0 auto; /* Centering the chart */
+}
+
+canvas#balance-chart {
+    width: 100%; /* Full width */
+    height: 400px; /* Set a fixed height for the chart */
+}
