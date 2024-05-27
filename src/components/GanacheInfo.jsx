@@ -22,7 +22,7 @@ function GanacheInfo() {
         async function fetchNetworkInfo() {
             try {
                 // Connect to Ganache
-                const web3 = new Web3('http://127.0.0.1:7545'); // Assuming Ganache is running on localhost:7545
+                const web3 = new Web3('http://127.0.0.1:7545'); // Ganache ui runs at port 7545, while Ganache cli runs at 8545
 
                 // Get network ID
                 const networkId = await web3.eth.net.getId();
