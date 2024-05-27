@@ -23,31 +23,57 @@
   
   /* Header title */
   .header h2 {
-    font-size: 24px;
+    font-size: 40px;
     font-weight: bold;
     margin: 0;
   }
   
   /* Network Info container */
-  .network-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+.network-info {
+    display: flex; /* Use flexbox */
+    align-items: center; /* Align items vertically */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    gap: 10px; /* Add space between items */
     color: #ebb67e; /* White text color */
-  }
+}
   
   /* Network Info items */
   .network-info p {
-    font-size: 14px;
+    font-size: 23px;
     margin: 0;
   }
   
+/* Data link */
+.datainfo {
+    list-style: none;
+    color: #343a40; /* Dark color for text */
+    font-size: 23px;
+    text-decoration: none;
+    padding: 5px 16px; /* Increased padding for better clickability */
+    background-color: #ebb67e; /* Light grey background */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.datainfo:hover {
+    background-color: #d9d9d9; /* Darker grey background on hover */
+    color: #000; /* Black text color on hover */
+}
+
+/* Data link text color when not hovering */
+.datainfo:not(:hover) {
+    color: #000; /* Black text color */
+}
+
+
 
 /* Error messages */
 .error {
     color: #dc3545; /* Red for error messages */
-    font-size: 14px; /* Smaller font size */
+    font-size: 25px; /* Smaller font size */
 }
+
 
 /* Main content container */
 .main-content {
@@ -76,27 +102,29 @@
 }
 
 /* Table styling */
-table {
+.account-info table {
     width: 100%;
     border-collapse: collapse;
 }
 
-th, td {
+.account-info th, .account-info td {
     border: 1px solid #ddd;
     padding: 15px; /* Adjusted padding */
 }
 
-th {
+.account-info th {
     background-color: #f2f2f2;
 }
 
-tr:nth-child(even) {
+.account-info tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-tr:hover {
+.account-info tr:hover {
     background-color: #ddd;
 }
+
+
 
 
 /* Chart styling */

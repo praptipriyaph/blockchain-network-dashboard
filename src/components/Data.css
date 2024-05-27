@@ -1,0 +1,70 @@
+/* Container for the entire data page */
+.data-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FCF8F3; /* Light blue background */
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Link to GanacheInfo page */
+.data-page > a {
+    display: inline-block; /* Change to inline-block */
+    margin-bottom: 20px;
+    color: #000;
+    text-decoration: none;
+    font-size: 23px;
+    padding: 10px 20px; /* Adjusted padding */
+    background-color: #ebb67e; /* Light grey background */
+    border: none; /* Remove border */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.data-page > a:hover {
+    background-color: #d9d9d9; /* Darker grey background on hover */
+    color: #000; /* Black text color on hover */
+}
+
+
+/* Section for device info */
+.device-info, .flow-info {
+    margin-bottom: 40px;
+}
+
+/* Section header */
+.device-info h2, .flow-info h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #343a40; /* Dark text color */
+}
+
+/* Table styling */
+.data-page table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 10px; /* Rounded corners */
+    margin-bottom: 20px; /* Add margin between tables */
+}
+
+.data-page th, .data-page td {
+    border: 1px solid #ddd;
+    padding: 12px; /* Adjusted padding */
+    text-align: left;
+}
+
+.data-page th {
+    background-color: #f2f2f2; /* Light gray background */
+    color: #343a40; /* Dark text color */
+}
+
+.data-page tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray background */
+}
+
+.data-page tr:hover {
+    background-color: #ddd; /* Darker gray background on hover */
+}

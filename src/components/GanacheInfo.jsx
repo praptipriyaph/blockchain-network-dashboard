@@ -4,6 +4,7 @@ import Chart from 'chart.js/auto';
 import './GanacheInfo.css'; // Import CSS file for styling
 import myContractABI from '../../build/contracts/MyContract.json'; // Import the ABI JSON file for your smart contract
 import { Link } from 'react-router-dom'
+
 function GanacheInfo() {
     const [networkId, setNetworkId] = useState(null);
     const [accounts, setAccounts] = useState([]);
@@ -12,8 +13,7 @@ function GanacheInfo() {
     const [contractAddress, setContractAddress] = useState('');
     const [nodeInfo, setNodeInfo] = useState(null);
     const [gasPrice, setGasPrice] = useState(null);
-    const [switchInfo, setSwitchInfo] = useState(null); // State to store switch information
-    const [switches, setSwitches] = useState([]); // State to store list of switches
+  
 
     // Reference to the Chart instance
     const chartRef = useRef(null);
@@ -53,11 +53,7 @@ function GanacheInfo() {
                 const contractABI = myContractABI.abi;
                 const myContract = new web3.eth.Contract(contractABI, contractAddress);
 
-                // Call getSwitch function to retrieve switch information
-                const switchId = 1; // Adjust switch ID as needed
-                const switchData = await myContract.methods.getSwitch(switchId).call();
-                console.log('Switch Data:', switchData);
-                setSwitches([switchData]);
+                
 
             } catch (error) {
                 console.error('Error:', error);
@@ -106,30 +102,15 @@ function GanacheInfo() {
                 <h2>Blockchain Network Dashboard</h2>
                 {error && <p className="error">Error: {error}</p>}
                 <div className="network-info">
-                    <p>Network ID: {networkId}</p>
-                    <p>Smart Contract Address: {contractAddress}</p>
-                    
-                    <Link to="/Data" className='datainfo'>Data</Link>
 
-                    {gasPrice && <p>Gas Price: {Web3.utils.fromWei(gasPrice, 'gwei')} Gwei</p>}
                     {nodeInfo && <p>Node Info: {nodeInfo}</p>}
-                    {switches && (
-                        <div>
-                            <p>Switches:</p>
-                            <ul>
-                                {switches.map((switchData, index) => (
-                                    <li key={index}>
-                                        <p>ID: {switchData[0]}</p>
-                                        <p>Name: {switchData[1]}</p>
-                                        <p>IP Address: {switchData[2]}</p>
-                                        <p>Rule Count: {switchData[3]}</p>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    )}
+                    <p>Network ID: {networkId}</p>
+                    {gasPrice && <p>Gas Price: {Web3.utils.fromWei(gasPrice, 'gwei')} Gwei</p>}
+
+                    <Link to="/Data" className='datainfo'>Data</Link>
                 </div>
             </header>
+
             <div className="main-content">
                 <div className="account-info">
                     <h3>Accounts</h3>
