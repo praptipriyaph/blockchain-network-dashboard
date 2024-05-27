@@ -112,3 +112,8 @@ canvas#balance-chart {
     width: 100%; /* Full width */
     height: 400px; /* Set a fixed height for the chart */
 }
+
+.datainfo{
+    list-style:none;
+    color: #ebb67e;
+}
