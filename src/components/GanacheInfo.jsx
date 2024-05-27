@@ -3,7 +3,7 @@ import Web3 from 'web3';
 import Chart from 'chart.js/auto';
 import './GanacheInfo.css'; // Import CSS file for styling
 import myContractABI from '../../build/contracts/MyContract.json'; // Import the ABI JSON file for your smart contract
-
+import { Link } from 'react-router-dom'
 function GanacheInfo() {
     const [networkId, setNetworkId] = useState(null);
     const [accounts, setAccounts] = useState([]);
@@ -108,6 +108,9 @@ function GanacheInfo() {
                 <div className="network-info">
                     <p>Network ID: {networkId}</p>
                     <p>Smart Contract Address: {contractAddress}</p>
+                    
+                    <Link to="/Data" className='datainfo'>Data</Link>
+
                     {gasPrice && <p>Gas Price: {Web3.utils.fromWei(gasPrice, 'gwei')} Gwei</p>}
                     {nodeInfo && <p>Node Info: {nodeInfo}</p>}
                     {switches && (
