@@ -1,24 +1,57 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Data.css'; // Import CSS file for styling
+import Web3 from 'web3'; // Import Web3 library
+import MyContract from '../../build/contracts/MyContract.json'; // Import ABI of the smart contract
 
 function Data() {
-    // Dummy data for device info
-    const switches = [
-        { switch_id: 1, name: 'Switch 1', ip_address: '192.168.1.1', rule_count: 5 },
-        { switch_id: 2, name: 'Switch 2', ip_address: '192.168.1.2', rule_count: 3 },
-        { switch_id: 3, name: 'Switch 3', ip_address: '192.168.1.3', rule_count: 7 }
-    ];
+    const [switches, setSwitches] = useState([]);
+    const [flows, setFlows] = useState([]);
 
-    // Dummy data for flow info
-    const flows = [
-        [
-            { rule_id: 1, inport: 'eth0', src_mac: '00:11:22:33:44:55', dst_mac: 'aa:bb:cc:dd:ee:ff', priority: 'high', outport: 'eth1' },
-            { rule_id: 2, inport: 'eth1', src_mac: 'aa:bb:cc:dd:ee:ff', dst_mac: '00:11:22:33:44:55', priority: 'low', outport: 'eth0' }
-        ],
-        [], // Placeholder for Switch 2
-        []  // Placeholder for Switch 3
-    ];
+    useEffect(() => {
+        const fetchData = async () => {
+            // Connect to Web3 provider
+            const web3 = new Web3(Web3.givenProvider || 'http://localhost:8545');
+            // Retrieve the deployed contract instance
+            const contractInstance = new web3.eth.Contract(MyContract.abi, 'CONTRACT_ADDRESS');
+            
+            // Fetch switch data
+            const switchCount = await contractInstance.methods.switch_count().call();
+            const switchData = [];
+            for (let i = 1; i <= switchCount; i++) {
+                const switchInfo = await contractInstance.methods.getSwitch(i).call();
+                switchData.push({
+                    switch_id: switchInfo[0],
+                    name: switchInfo[1],
+                    ip_address: switchInfo[2],
+                    rule_count: switchInfo[3]
+                });
+            }
+            setSwitches(switchData);
+
+            // Fetch flow data
+            const flowData = [];
+            for (let i = 0; i < switchCount; i++) {
+                const flowCount = await contractInstance.methods.getRuleCount(i + 1).call();
+                const switchFlows = [];
+                for (let j = 1; j <= flowCount; j++) {
+                    const flowInfo = await contractInstance.methods.getRule(i + 1, j).call();
+                    switchFlows.push({
+                        rule_id: flowInfo[0],
+                        inport: flowInfo[1],
+                        src_mac: flowInfo[2],
+                        dst_mac: flowInfo[3],
+                        priority: flowInfo[4],
+                        outport: flowInfo[5]
+                    });
+                }
+                flowData.push(switchFlows);
+            }
+            setFlows(flowData);
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <div className="data-page">
@@ -30,7 +63,7 @@ function Data() {
             </header>
 
             <section className="device-info-container">
-                <h1 className="section-heading">Device Info</h1>
+                <h1 className="section-heading">Devices</h1>
                 <div className="device-info">
                     {switches.map((switchData, index) => (
                         <div key={index} className="device-card">
@@ -46,9 +79,9 @@ function Data() {
             <section className="flow-info-container">
                 <h1 className="section-heading">Flow Info</h1>
                 <div className="switch-flow-container">
-                    {switches.map((switchData, index) => (
+                    {switches.map((_, index) => (
                         <div key={index} className="switch-flow-card">
-                            <h3>{switchData.name}</h3>
+                            <h3>{switches[index].name}</h3>
                             <ul>
                                 {flows[index].map((flow, idx) => (
                                     <li key={idx}>
