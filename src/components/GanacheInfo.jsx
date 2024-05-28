@@ -5,6 +5,7 @@ import './GanacheInfo.css'; // Import CSS file for styling
 import myContractABI from '../../build/contracts/MyContract.json'; // Import the ABI JSON file for your smart contract
 import { Link } from 'react-router-dom'
 
+//Several state variables are initialized using the useState hook.
 function GanacheInfo() {
     const [networkId, setNetworkId] = useState(null);
     const [accounts, setAccounts] = useState([]);
@@ -18,6 +19,7 @@ function GanacheInfo() {
     // Reference to the Chart instance
     const chartRef = useRef(null);
 
+    //fetching information inside the useEffect hook
     useEffect(() => {
         async function fetchNetworkInfo() {
             try {

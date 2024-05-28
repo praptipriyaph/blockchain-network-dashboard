@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Data.css'; // Import CSS file for styling
 
-
 function Data() {
     // Dummy data for device info
     const switches = [
@@ -13,11 +12,13 @@ function Data() {
 
     // Dummy data for flow info
     const flows = [
-        { rule_id: 1, inport: 'eth0', src_mac: '00:11:22:33:44:55', dst_mac: 'aa:bb:cc:dd:ee:ff', priority: 'high', outport: 'eth1' },
-        { rule_id: 2, inport: 'eth1', src_mac: 'aa:bb:cc:dd:ee:ff', dst_mac: '00:11:22:33:44:55', priority: 'low', outport: 'eth0' }
+        [
+            { rule_id: 1, inport: 'eth0', src_mac: '00:11:22:33:44:55', dst_mac: 'aa:bb:cc:dd:ee:ff', priority: 'high', outport: 'eth1' },
+            { rule_id: 2, inport: 'eth1', src_mac: 'aa:bb:cc:dd:ee:ff', dst_mac: '00:11:22:33:44:55', priority: 'low', outport: 'eth0' }
+        ],
+        [], // Placeholder for Switch 2
+        []  // Placeholder for Switch 3
     ];
-
-
 
     return (
         <div className="data-page">
@@ -25,61 +26,44 @@ function Data() {
                 <h1>SDN Network Dashboard</h1>
                 <div className="header-actions">
                     <Link to="/">Blockchain Info.</Link>
-                    
                 </div>
             </header>
 
-            <section className="device-info">
-                <h2>Device Info</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Switch ID</th>
-                            <th>Name</th>
-                            <th>IP Address</th>
-                            <th>Rule Count</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {switches.map((switchData, index) => (
-                            <tr key={index}>
-                                <td>{switchData.switch_id}</td>
-                                <td>{switchData.name}</td>
-                                <td>{switchData.ip_address}</td>
-                                <td>{switchData.rule_count}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <section className="device-info-container">
+                <h1 className="section-heading">Device Info</h1>
+                <div className="device-info">
+                    {switches.map((switchData, index) => (
+                        <div key={index} className="device-card">
+                            <h3>{switchData.name}</h3>
+                            <p><strong>Switch ID:</strong> {switchData.switch_id}</p>
+                            <p><strong>IP Address:</strong> {switchData.ip_address}</p>
+                            <p><strong>Rule Count:</strong> {switchData.rule_count}</p>
+                        </div>
+                    ))}
+                </div>
             </section>
 
-
-            <section className="flow-info">
-                <h2>Flow Info</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rule ID</th>
-                            <th>Inport</th>
-                            <th>Src MAC</th>
-                            <th>Dst MAC</th>
-                            <th>Priority</th>
-                            <th>Outport</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {flows.map((flowData, index) => (
-                            <tr key={index}>
-                                <td>{flowData.rule_id}</td>
-                                <td>{flowData.inport}</td>
-                                <td>{flowData.src_mac}</td>
-                                <td>{flowData.dst_mac}</td>
-                                <td>{flowData.priority}</td>
-                                <td>{flowData.outport}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <section className="flow-info-container">
+                <h1 className="section-heading">Flow Info</h1>
+                <div className="switch-flow-container">
+                    {switches.map((switchData, index) => (
+                        <div key={index} className="switch-flow-card">
+                            <h3>{switchData.name}</h3>
+                            <ul>
+                                {flows[index].map((flow, idx) => (
+                                    <li key={idx}>
+                                        <strong>Rule ID:</strong> {flow.rule_id}<br />
+                                        <strong>Inport:</strong> {flow.inport}<br />
+                                        <strong>Src MAC:</strong> {flow.src_mac}<br />
+                                        <strong>Dst MAC:</strong> {flow.dst_mac}<br />
+                                        <strong>Priority:</strong> {flow.priority}<br />
+                                        <strong>Outport:</strong> {flow.outport}<br />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))}
+                </div>
             </section>
         </div>
     );
