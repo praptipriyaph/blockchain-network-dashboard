@@ -10,19 +10,19 @@ Currently, two official plugins are available:
 
 # Setting up Truffle and Deploying Smart Contracts
 
-Truffle Init
+-Truffle Init
 Command: truffle init
 
 Description:
 This command initializes a new Truffle project in the current directory. It sets up the basic directory structure and configuration files necessary for your Ethereum development. It creates folders for contracts, migrations, tests, and more.
 
-Truffle Compile
+-Truffle Compile
 Command: truffle compile
 
 Description:
 This command compiles your Solidity smart contracts located in the contracts directory within your Truffle project. It transforms the human-readable Solidity code into bytecode that can be executed on the Ethereum Virtual Machine (EVM). The compiled artifacts are stored in the build/contracts directory.
 
-Truffle Migrate
+-Truffle Migrate
 Command: truffle migrate --network development
 
 Description:
