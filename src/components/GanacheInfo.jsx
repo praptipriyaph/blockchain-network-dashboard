@@ -107,7 +107,7 @@ function GanacheInfo() {
                     <p>Network ID: {networkId}</p>
                     {gasPrice && <p>Gas Price: {Web3.utils.fromWei(gasPrice, 'gwei')} Gwei</p>}
 
-                    <Link to="/Data" className='datainfo'>Data</Link>
+                    <Link to="/Data" className='datainfo'>SDN Data</Link>
                 </div>
             </header>
 

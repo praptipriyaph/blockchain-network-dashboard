@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Data.css'; // Import CSS file for styling
 
+
 function Data() {
     // Dummy data for device info
     const switches = [
@@ -16,9 +17,18 @@ function Data() {
         { rule_id: 2, inport: 'eth1', src_mac: 'aa:bb:cc:dd:ee:ff', dst_mac: '00:11:22:33:44:55', priority: 'low', outport: 'eth0' }
     ];
 
+
+
     return (
         <div className="data-page">
-            <Link to="/">GanacheInfo</Link>
+            <header className="header">
+                <h1>SDN Network Dashboard</h1>
+                <div className="header-actions">
+                    <Link to="/">Blockchain Info.</Link>
+                    
+                </div>
+            </header>
+
             <section className="device-info">
                 <h2>Device Info</h2>
                 <table>
@@ -42,6 +52,8 @@ function Data() {
                     </tbody>
                 </table>
             </section>
+
+
             <section className="flow-info">
                 <h2>Flow Info</h2>
                 <table>
